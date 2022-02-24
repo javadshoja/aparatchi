@@ -9,3 +9,14 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model Movie {
+  @@map("movie")
+  id String @id @default(uuid())
+  imdbId String @unique
+  title String
+  summary String @db.VarChar(500)
+  year Int
+  time Int
+  rating Float
+}
