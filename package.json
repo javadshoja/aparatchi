@@ -1,0 +1,13 @@
+{
+	"name": "pern-moviedb",
+	"version": "1.0.0",
+	"description": "",
+	"scripts": {
+		"start": "npm start --prefix backend",
+		"server": "npm run --prefix backend dev",
+		"dev": "npm run server"
+	},
+	"keywords": [],
+	"author": "jbrave",
+	"license": "MIT"
+}
