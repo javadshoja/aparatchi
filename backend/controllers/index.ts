@@ -1,5 +1,6 @@
 export {
 	getMovies,
+	getMoviesById,
 	createMovie,
 	updateMovie,
 	deleteMovie,
