@@ -20,3 +20,11 @@ model Movie {
   time Int
   rating Float
 }
+
+model User {
+  @@map("user")
+  id String @id @default(uuid())
+  name String
+  email String @unique
+  password String
+}
