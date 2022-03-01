@@ -1,6 +1,6 @@
 import asyncHandler from 'express-async-handler'
 import type { Request, Response } from 'express'
-import { genSalt, hash } from 'bcrypt'
+import { compare, compareSync, genSalt, hash } from 'bcrypt'
 import { PrismaClient } from '@prisma/client'
 import { sign } from 'jsonwebtoken'
 
@@ -74,7 +74,25 @@ export const registerUser = asyncHandler(
   @access   Public
 */
 export const loginUser = asyncHandler(async (req: Request, res: Response) => {
-	res.json({ message: 'Login user' })
+	const { email, password } = req.body
+
+	const User = await user.findUnique({
+		where: {
+			email,
+		},
+	})
+
+	if (User && compareSync(password, User.password)) {
+		res.json({
+			_id: User.id,
+			name: User.name,
+			email: User.email,
+			token: generateToken(User.id),
+		})
+	} else {
+		res.status(400)
+		throw new Error('Invalid credentials')
+	}
 })
 
 /* 
