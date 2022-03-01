@@ -3,6 +3,7 @@ import type { Request, Response } from 'express'
 import { compare, compareSync, genSalt, hash } from 'bcrypt'
 import { PrismaClient } from '@prisma/client'
 import { sign } from 'jsonwebtoken'
+import { IuserRequest } from '~/middleware'
 
 const { user } = new PrismaClient()
 
@@ -101,6 +102,14 @@ export const loginUser = asyncHandler(async (req: Request, res: Response) => {
   @route    /api/user/me
   @access   Private
 */
-export const getMe = asyncHandler(async (req: Request, res: Response) => {
-	res.json({ message: 'User information' })
+export const getMe = asyncHandler(async (req: IuserRequest, res: Response) => {
+	const { id } = req.user
+
+	const User = await user.findUnique({
+		where: {
+			id,
+		},
+	})
+
+	res.json({ id: User?.id, name: User?.name, email: User?.email })
 })
