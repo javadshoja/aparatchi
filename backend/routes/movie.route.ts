@@ -6,16 +6,16 @@ import {
 	updateMovie,
 	deleteMovie,
 } from '~/controllers'
+import { protect } from '~/middleware'
 
 const router = Router()
 
-router.route('/').get(getMovies).post(createMovie)
+router.route('/').get(protect, getMovies).post(createMovie)
 
-router.route('/:movieId').put().delete()
 router
 	.route('/:movieId')
 	.put(updateMovie)
 	.delete(deleteMovie)
-	.get(getMoviesById)
+	.get(protect, getMoviesById)
 
 export default router
