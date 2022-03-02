@@ -1,7 +1,7 @@
 import { Router } from 'express'
 import {
 	getMovies,
-	getMoviesById,
+	getMovieById,
 	createMovie,
 	updateMovie,
 	deleteMovie,
@@ -16,6 +16,6 @@ router
 	.route('/:movieId')
 	.put(updateMovie)
 	.delete(deleteMovie)
-	.get(protect, getMoviesById)
+	.get(protect, getMovieById)
 
 export default router

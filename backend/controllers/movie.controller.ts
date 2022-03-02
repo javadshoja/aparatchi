@@ -21,7 +21,7 @@ export const getMovies = asyncHandler(async (req: Request, res: Response) => {
   @route    /api/movie/:movieId
   @access   Private
 */
-export const getMoviesById = asyncHandler(
+export const getMovieById = asyncHandler(
 	async (req: Request, res: Response) => {
 		const { movieId } = req.params
 		const Movie = await movie.findUnique({
