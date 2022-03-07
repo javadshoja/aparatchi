@@ -24,8 +24,6 @@ const protect = asyncHandler(
 				// Get token from headers
 				token = authorization.split(' ')[1]
 
-				console.log(token)
-
 				// Verify token
 				const decoded = verify(
 					token,
