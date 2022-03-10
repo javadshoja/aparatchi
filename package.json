@@ -9,5 +9,8 @@
 	},
 	"keywords": [],
 	"author": "jbrave",
-	"license": "MIT"
+	"license": "MIT",
+	"devDependencies": {
+		"prettier": "^2.5.1"
+	}
 }
