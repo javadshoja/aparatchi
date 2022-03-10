@@ -1,0 +1,37 @@
+@import url('https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v32.0.0/Vazirmatn-font-face.css');
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	font-family: 'Vazirmatn', sans-serif;
+	height: 100vh;
+	background-color: #010511;
+	color: #fff;
+}
+
+a {
+	text-decoration: none;
+	color: #fff;
+}
+
+p {
+	line-height: 1.7;
+}
+
+ul {
+	list-style: none;
+}
+
+li {
+	line-height: 2.2;
+}
+
+h1,
+h2,
+h3 {
+	font-weight: 600;
+}
