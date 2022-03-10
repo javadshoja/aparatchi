@@ -5,12 +5,18 @@
 	"scripts": {
 		"start": "npm start --prefix backend",
 		"server": "npm run --prefix backend dev",
-		"dev": "npm run server"
+		"dev": "npm run server",
+		"prepare": "husky install"
 	},
 	"keywords": [],
 	"author": "jbrave",
 	"license": "MIT",
 	"devDependencies": {
+		"husky": "^7.0.4",
+		"lint-staged": "^12.3.5",
 		"prettier": "^2.5.1"
+	},
+	"lint-staged": {
+		"*.{js,ts,jsx,tsx,css,md}": "prettier -w"
 	}
 }
