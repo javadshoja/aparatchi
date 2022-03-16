@@ -15,6 +15,7 @@ import ClientStyleContext from './styles/client.context'
 import type { MetaFunction, LinksFunction } from 'remix'
 import globalStyleUrl from '~/styles/global.css'
 import styled from '@emotion/styled'
+import { Layout } from '~/components'
 
 export const meta: MetaFunction = () => {
 	return { title: 'Aparatchi' }
@@ -81,7 +82,9 @@ const Document = withEmotionCache(
 export default function App() {
 	return (
 		<Document>
-			<Outlet />
+			<Layout>
+				<Outlet />
+			</Layout>
 		</Document>
 	)
 }
