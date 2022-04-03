@@ -5,7 +5,8 @@
 	"scripts": {
 		"start": "npm start --prefix backend",
 		"server": "npm run --prefix backend dev",
-		"dev": "npm run server",
+		"client": "npm run --prefix frontend dev",
+		"dev": "concurrently \"npm run server\" \"npm run client\"",
 		"prepare": "husky install"
 	},
 	"keywords": [],
@@ -18,5 +19,8 @@
 	},
 	"lint-staged": {
 		"*.{js,ts,jsx,tsx,css,md}": "prettier -w"
+	},
+	"dependencies": {
+		"concurrently": "^7.0.0"
 	}
 }
