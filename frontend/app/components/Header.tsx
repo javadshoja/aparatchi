@@ -2,6 +2,7 @@ import styled from '@emotion/styled'
 import { Link as link } from 'remix'
 import { IoLogInOutline } from 'react-icons/io5'
 import { AiOutlineUserAdd } from 'react-icons/ai'
+import { Button } from './styles'
 
 const HeaderContainer = styled.header`
 	display: flex;
@@ -41,22 +42,32 @@ const Logo = styled(Link)`
 	color: #eb1145;
 `
 
-function Header() {
+function Header({ user }: any) {
 	return (
 		<HeaderContainer>
 			<Logo to='/'>Aparatchi</Logo>
 			<Navbar>
 				<Items>
-					<Item>
-						<Link to='/login'>
-							ورود <IoLogInOutline />
-						</Link>
-					</Item>
-					<Item>
-						<Link to='/register'>
-							ثبت نام <AiOutlineUserAdd />
-						</Link>
-					</Item>
+					{user ? (
+						<Item>
+							<form action='/auth/logout' method='POST'>
+								<Button type='submit'>{user.name} خروج از حساب</Button>
+							</form>
+						</Item>
+					) : (
+						<>
+							<Item>
+								<Link to='/login'>
+									ورود <IoLogInOutline />
+								</Link>
+							</Item>
+							<Item>
+								<Link to='/register'>
+									ثبت نام <AiOutlineUserAdd />
+								</Link>
+							</Item>
+						</>
+					)}
 				</Items>
 			</Navbar>
 		</HeaderContainer>

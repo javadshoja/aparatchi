@@ -4,18 +4,21 @@ import {
 	LiveReload,
 	Meta,
 	Outlet,
+	redirect,
 	Scripts,
 	ScrollRestoration,
-	useCatch
+	useCatch,
+	useLoaderData
 } from 'remix'
 import { useContext, useEffect } from 'react'
 import { withEmotionCache } from '@emotion/react'
 import ServerStyleContext from './styles/server.context'
 import ClientStyleContext from './styles/client.context'
-import type { MetaFunction, LinksFunction } from 'remix'
+import type { MetaFunction, LinksFunction, LoaderFunction } from 'remix'
 import globalStyleUrl from '~/styles/global.css'
 import styled from '@emotion/styled'
 import { Layout } from '~/components'
+import { getUser } from './utils/session.server'
 
 export const meta: MetaFunction = () => {
 	return { title: 'Aparatchi' }
@@ -79,10 +82,18 @@ const Document = withEmotionCache(
 	}
 )
 
+export const loader: LoaderFunction = async ({ request }) => {
+	const user = await getUser(request)
+
+	return { user }
+}
+
 export default function App() {
+	const { user } = useLoaderData()
+
 	return (
 		<Document>
-			<Layout>
+			<Layout user={user}>
 				<Outlet />
 			</Layout>
 		</Document>

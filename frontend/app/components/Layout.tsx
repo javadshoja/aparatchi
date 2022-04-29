@@ -1,8 +1,8 @@
 import Header from './Header'
-function Layout({ children }: any) {
+function Layout({ children, user }: any) {
 	return (
 		<>
-			<Header />
+			<Header user={user} />
 			{children}
 		</>
 	)
