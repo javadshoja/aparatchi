@@ -3,11 +3,13 @@ lockfileVersion: 5.3
 specifiers:
   '@prisma/client': ^3.10.0
   '@types/bcrypt': ^5.0.0
+  '@types/cors': ^2.8.12
   '@types/express': ^4.17.13
   '@types/jsonwebtoken': ^8.5.8
   '@types/node': ^17.0.18
   bcrypt: ^5.0.1
   colorts: ^0.1.63
+  cors: ^2.8.5
   dotenv: ^16.0.0
   express: ^4.17.3
   express-async-handler: ^1.2.0
@@ -21,6 +23,7 @@ specifiers:
 dependencies:
   '@prisma/client': 3.10.0_prisma@3.10.0
   bcrypt: 5.0.1
+  cors: 2.8.5
   dotenv: 16.0.0
   express: 4.17.3
   express-async-handler: 1.2.0
@@ -28,6 +31,7 @@ dependencies:
 
 devDependencies:
   '@types/bcrypt': 5.0.0
+  '@types/cors': 2.8.12
   '@types/express': 4.17.13
   '@types/jsonwebtoken': 8.5.8
   '@types/node': 17.0.21
@@ -138,6 +142,10 @@ packages:
     resolution: {integrity: sha512-cdeYyv4KWoEgpBISTxWvqYsVy444DOqehiF3fM3ne10AmJ62RSyNkUnxMJXHQWRQQX2eR94m5y1IZyDwBjV9FQ==}
     dependencies:
       '@types/node': 17.0.21
+    dev: true
+
+  /@types/cors/2.8.12:
+    resolution: {integrity: sha512-vt+kDhq/M2ayberEtJcIN/hxXy1Pk+59g2FV/ZQceeaTyCtCucjL2Q7FXlFjtWn4n15KCr1NE2lNNFhp0lEThw==}
     dev: true
 
   /@types/express-serve-static-core/4.17.28:
@@ -458,6 +466,14 @@ packages:
   /cookie/0.4.2:
     resolution: {integrity: sha512-aSWTXFzaKWkvHO1Ny/s+ePFpvKsPnjc551iI41v3ny/ow6tBG5Vd+FuqGNhh1LxOmVzOlGUriIlOaokOvhaStA==}
     engines: {node: '>= 0.6'}
+    dev: false
+
+  /cors/2.8.5:
+    resolution: {integrity: sha512-KIHbLJqu73RGr/hnbrO9uBeixNGuvSQjul/jdFvS/KFSIH1hWVd1ng7zOHx+YrEfInLG7q4n6GHQ9cDtxv/P6g==}
+    engines: {node: '>= 0.10'}
+    dependencies:
+      object-assign: 4.1.1
+      vary: 1.1.2
     dev: false
 
   /create-require/1.1.1:
