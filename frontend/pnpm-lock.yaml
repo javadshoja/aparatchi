@@ -12,6 +12,7 @@ specifiers:
   '@remix-run/serve': 1.2.3
   '@types/react': ^17.0.39
   '@types/react-dom': ^17.0.13
+  axios: ^0.26.1
   cross-env: ^7.0.3
   eslint: ^8.10.0
   react: ^17.0.2
@@ -27,6 +28,7 @@ dependencies:
   '@emotion/styled': 11.8.1_c697ad3c4ddb0545c7a1d619984abba5
   '@remix-run/react': 1.2.3_react-dom@17.0.2+react@17.0.2
   '@remix-run/serve': 1.2.3_react-dom@17.0.2+react@17.0.2
+  axios: 0.26.1
   cross-env: 7.0.3
   react: 17.0.2
   react-dom: 17.0.2_react@17.0.2
@@ -1213,6 +1215,14 @@ packages:
     resolution: {integrity: sha512-gd1kmb21kwNuWr6BQz8fv6GNECPBnUasepcoLbekws23NVBLODdsClRZ+bQ8+9Uomf3Sm3+Vwn0oYG9NvwnJCw==}
     engines: {node: '>=4'}
     dev: true
+
+  /axios/0.26.1:
+    resolution: {integrity: sha512-fPwcX4EvnSHuInCMItEhAGnaSEXRBjtzh9fOtsE6E1G6p7vl7edEeZe11QHf18+6+9gR5PbKV/sGKNaD8YaMeA==}
+    dependencies:
+      follow-redirects: 1.14.9
+    transitivePeerDependencies:
+      - debug
+    dev: false
 
   /axobject-query/2.2.0:
     resolution: {integrity: sha512-Td525n+iPOOyUQIeBfcASuG6uJsDOITl7Mds5gFyerkWiX7qhUTdYUBlSgNMyVqtSJqwpt1kXGLdUt6SykLMRA==}
@@ -2531,6 +2541,16 @@ packages:
   /flatted/3.2.5:
     resolution: {integrity: sha512-WIWGi2L3DyTUvUrwRKgGi9TwxQMUEqPOPQBVi71R96jZXJdFskXEmf54BoZaS1kknGODoIGASGEzBUYdyMCBJg==}
     dev: true
+
+  /follow-redirects/1.14.9:
+    resolution: {integrity: sha512-MQDfihBQYMcyy5dhRDJUHcw7lb2Pv/TuE6xP1vyraLukNDHKbDxDNaOE3NbCAdKQApno+GPRyo1YAp89yCjK4w==}
+    engines: {node: '>=4.0'}
+    peerDependencies:
+      debug: '*'
+    peerDependenciesMeta:
+      debug:
+        optional: true
+    dev: false
 
   /foreach/2.0.5:
     resolution: {integrity: sha1-C+4AUBiusmDQo6865ljdATbsG5k=}
