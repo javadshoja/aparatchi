@@ -8,6 +8,35 @@ import {
 } from '~/components/styles/Form.styled'
 import { FormArea, ImageArea } from '~/components/styles/Login.styled'
 import { ButtonBlock } from '~/components/styles'
+import { redirect } from 'remix'
+import type { LoaderFunction, ActionFunction } from 'remix'
+import { createUserSession, getUser } from '~/utils/session.server'
+import auth from '~/api/auth.server'
+
+export const action: ActionFunction = async ({ request }) => {
+	const form = await request.formData()
+
+	const email = form.get('email') as string
+	const password = form.get('password') as string
+
+	const fields = {
+		email,
+		password
+	}
+
+	const user = await auth.login(fields)
+
+	return createUserSession(user, '/')
+}
+
+export const loader: LoaderFunction = async ({ request }) => {
+	const token = await getUser(request)
+
+	if (token) {
+		return redirect('/')
+	}
+	return null
+}
 
 function Login() {
 	const [formData, setFormData] = useState({
