@@ -9,6 +9,11 @@ import {
 import { FormArea, ImageArea } from '~/components/styles/Register.styled'
 import { ButtonBlock } from '~/components/styles'
 import styled from '@emotion/styled'
+import { redirect, useActionData } from 'remix'
+import type { ActionFunction, LoaderFunction } from 'remix'
+import { badRequest } from '~/utils/badRequest'
+import { createUserSession, getUser } from '~/utils/session.server'
+import auth from '~/api/auth.server'
 
 const Container = styled(InputContainer)`
 	margin-top: 20px;
@@ -20,6 +25,38 @@ const RegisterHeader = styled(Header)`
 		margin: 10px 0 30px;
 	}
 `
+
+export const action: ActionFunction = async ({ request }) => {
+	const form = await request.formData()
+
+	const name = form.get('name') as string
+	const email = form.get('email') as string
+	const password = form.get('password') as string
+	const password2 = form.get('password2') as string
+
+	if (password !== password2) {
+		return badRequest({ error: 'رمز عبور یکسان نیست' })
+	}
+
+	const fields = {
+		name,
+		email,
+		password
+	}
+
+	const user = await auth.register(fields)
+
+	return createUserSession(user, '/')
+}
+
+export const loader: LoaderFunction = async ({ request }) => {
+	const token = await getUser(request)
+
+	if (token) {
+		return redirect('/')
+	}
+	return null
+}
 
 function Register() {
 	const [formData, setFormData] = useState({
@@ -38,6 +75,8 @@ function Register() {
 		}))
 	}
 
+	const actionData = useActionData()
+
 	return (
 		<>
 			<Grid>
@@ -46,6 +85,7 @@ function Register() {
 				</ImageArea>
 				<FormArea>
 					<RegisterHeader>
+						{actionData?.error && <p>{actionData?.error}</p>}
 						<h1>:) خوش اومدی</h1>
 						<p>ثبت‌نام و ساخت حساب کاربری</p>
 					</RegisterHeader>
@@ -83,7 +123,7 @@ function Register() {
 						</Container>
 						<Container>
 							<Input
-								type='password2'
+								type='password'
 								name='password2'
 								id='password2'
 								placeholder='تکرار رمز عبور'
