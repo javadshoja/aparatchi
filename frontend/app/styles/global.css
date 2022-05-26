@@ -36,3 +36,7 @@ h2,
 h3 {
 	font-weight: 600;
 }
+
+.enable-scroll {
+	background-color: #010511;
+}
