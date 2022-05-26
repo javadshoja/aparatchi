@@ -1,21 +1,33 @@
-import { LoaderFunction, redirect, useLoaderData } from 'remix'
+import { useLoaderData } from 'remix'
+import type { LinksFunction, LoaderFunction } from 'remix'
+import { getBannerMovies } from '~/api/movies.server'
 import { Hero } from '~/components'
+import SliderStyle from 'react-responsive-carousel/lib/styles/carousel.min.css'
+import { SliderBanner } from '~/components'
 import { getUser } from '~/utils/session.server'
+
+export const links: LinksFunction = () => [
+	{ rel: 'stylesheet', href: SliderStyle }
+]
 
 export const loader: LoaderFunction = async ({ request }) => {
 	const user = await getUser(request)
 
-	return { user }
+	const bannerMovies = await getBannerMovies()
+
+	if (user) return { user, bannerMovies }
+
+	return {}
 }
 
 export default function Index() {
-	const { user } = useLoaderData()
+	const { user, bannerMovies } = useLoaderData()
 
 	return (
 		<>
 			{user ? (
 				<>
-					<h3>{user.name} سلام</h3>
+					<SliderBanner bannerMovies={bannerMovies} />
 				</>
 			) : (
 				<>
