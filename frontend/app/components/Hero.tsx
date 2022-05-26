@@ -24,10 +24,13 @@ export default Hero
 
 const Container = styled.section`
 	display: grid;
+	position: relative;
 	align-items: center;
-	height: 85vh;
+	height: 100vh;
 	grid-template-columns: repeat(12, 1fr);
 	grid-template-rows: repeat(12, 1fr);
+	background-image: url('images/hero-background.jpg');
+	background-size: cover;
 `
 const Main = styled.div`
 	grid-column: 5/9;
