@@ -10,7 +10,7 @@ const Button = styled.button`
 	cursor: pointer;
 	text-align: center;
 	padding: 10px 20px;
-	border: 1px solid #000;
+	border: none;
 `
 
 export const ButtonBlock = styled(Button)`
