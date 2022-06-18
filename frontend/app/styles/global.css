@@ -40,3 +40,7 @@ h3 {
 .enable-scroll {
 	background-color: #010511;
 }
+
+.hidden {
+	display: none;
+}
