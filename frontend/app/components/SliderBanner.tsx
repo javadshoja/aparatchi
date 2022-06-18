@@ -60,7 +60,6 @@ export default SliderBanner
 
 const Container = styled.section`
 	position: relative;
-	width: 100vw;
 	margin: 0 auto;
 `
 
