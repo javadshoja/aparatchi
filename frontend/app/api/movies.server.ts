@@ -35,3 +35,33 @@ export const getBannerMovies = async () => {
 
 	return [batman, blacklight, spiderMan, uncharted, theOutfit]
 }
+
+export const getRowsMovies = async () => {
+	const [
+		trendingNow,
+		topRated,
+		actionMovies,
+		comedyMovies,
+		horrorMovies,
+		romanceMovies,
+		documentaries
+	] = await Promise.all([
+		axios.get(requests.fetchTrending).then(res => res.data),
+		axios.get(requests.fetchTopRated).then(res => res.data),
+		axios.get(requests.fetchActionMovies).then(res => res.data),
+		axios.get(requests.fetchComedyMovies).then(res => res.data),
+		axios.get(requests.fetchHorrorMovies).then(res => res.data),
+		axios.get(requests.fetchRomanceMovies).then(res => res.data),
+		axios.get(requests.fetchDocumentaries).then(res => res.data)
+	])
+
+	return [
+		trendingNow.results,
+		topRated.results,
+		actionMovies.results,
+		comedyMovies.results,
+		horrorMovies.results,
+		romanceMovies.results,
+		documentaries.results
+	]
+}
