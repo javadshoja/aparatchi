@@ -12,8 +12,8 @@ interface props {
 function SliderBanner({ bannerMovies }: props) {
 	const navigate = useNavigate()
 
-	function onClick(imdbId: string) {
-		navigate(`movies/${imdbId}`)
+	function onClick(id: number) {
+		navigate(`movies/${id}`)
 	}
 	return (
 		<Container>
@@ -42,12 +42,10 @@ function SliderBanner({ bannerMovies }: props) {
 								{movie?.title || movie?.original_name || movie?.name}
 							</Title>
 							<Overview>{movie?.overview}</Overview>
-							<MovieLink to={`movies/${movie?.imdb_id}`}>
+							<MovieLink to={`movies/${movie?.id}`}>
 								IMDb: {movie?.vote_average}/10
 							</MovieLink>
-							<Button onClick={() => onClick(movie?.imdb_id)}>
-								اطلاعات بیشتر
-							</Button>
+							<Button onClick={() => onClick(movie?.id)}>اطلاعات بیشتر</Button>
 						</DetailsContainer>
 					</div>
 				))}
