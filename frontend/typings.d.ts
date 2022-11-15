@@ -19,6 +19,7 @@ export interface Movie {
 	overview: string
 	popularity: number
 	poster_path: string
+	profile_path: string
 	vote_average: number
 	vote_count: number
 }
@@ -31,4 +32,10 @@ export interface Element {
 		| 'Clip'
 		| 'Trailer'
 		| 'Teaser'
+}
+
+export interface Comment {
+	id: string
+	body: string
+	created_at: string
 }
