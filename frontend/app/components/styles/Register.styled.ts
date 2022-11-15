@@ -1,10 +1,10 @@
 import styled from '@emotion/styled'
 
 export const FormArea = styled.div`
-	grid-column: 8/12;
+	grid-column: 7/11;
 
 	@media (max-width: 60em) {
-		grid-column: 8/12;
+		grid-column: 7/11;
 	}
 	@media (max-width: 50em) {
 		grid-column: 3/11;
@@ -14,10 +14,10 @@ export const FormArea = styled.div`
 	}
 `
 export const ImageArea = styled.div`
-	grid-column: 3/8;
+	grid-column: 2/7;
 
 	@media (max-width: 60em) {
-		grid-column: 3/8;
+		grid-column: 2/7;
 	}
 	@media (max-width: 50em) {
 		display: none;
