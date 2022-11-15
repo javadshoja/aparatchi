@@ -4,6 +4,7 @@ import express from 'express'
 import cors from 'cors'
 import movie from '~/routes/movie.route'
 import user from '~/routes/user.route'
+import comment from '~/routes/comment.route'
 import { errorHandler } from '~/middleware'
 
 const PORT = process.env.PORT || 4000
@@ -17,6 +18,7 @@ app.use(cors())
 
 app.use('/api/movie', movie)
 app.use('/api/user', user)
+app.use('/api/comment', comment)
 
 app.use(errorHandler)
 
