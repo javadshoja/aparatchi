@@ -65,3 +65,13 @@ export const getRowsMovies = async () => {
 		documentaries.results
 	]
 }
+
+export const getMovie = async (movieId: number | string) => {
+	const response = await axios.get(
+		`${BASE_URL}/movie/${movieId}?api_key=${API_KEY}&language=en-US&append_to_response=release_dates,external_ids,credits,content_ratings`
+	)
+
+	const movie = await response.data
+
+	return movie
+}
