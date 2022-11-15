@@ -10,21 +10,26 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Movie {
-  @@map("movie")
-  id String @id @default(uuid())
-  imdbId String @unique
-  title String
-  summary String @db.VarChar(500)
-  year Int
-  time Int
-  rating Float
+model User {
+  id       String    @id @default(uuid())
+  name     String
+  email    String    @unique
+  password String
+  comments Comment[]
+
+  @@map("user")
 }
 
-model User {
-  @@map("user")
-  id String @id @default(uuid())
-  name String
-  email String @unique
-  password String
+model Comment {
+  id         String   @id @default(uuid())
+  body       String
+  author     String
+  movie      String
+  movie_id   Int
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+  user       User     @relation(fields: [user_id], references: [id])
+  user_id    String
+
+  @@map("comment")
 }
